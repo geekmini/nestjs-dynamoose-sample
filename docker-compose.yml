@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  sample-dynamodb:
+    image: amazon/dynamodb-local
+    hostname: sample-dynamodb
+    container_name: sample-dynamodb
+    command: -jar DynamoDBLocal.jar -sharedDb -optimizeDbBeforeStartup -dbPath /data/dynamodb
+    volumes:
+      - ./data/dynamodb:/data/dynamodb
+    ports:
+      - 5454:8000
