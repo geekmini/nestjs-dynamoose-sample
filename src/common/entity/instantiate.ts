@@ -1,22 +1,10 @@
 import { InternalServerErrorException, Type } from '@nestjs/common';
 import { ClassTransformOptions, plainToInstance } from 'class-transformer';
 import { ValidatorOptions, validateSync } from 'class-validator';
-import { isEmpty } from 'lodash';
+
 import { flattenValidationErrors } from '../validation/flattenValidationErrors';
-
-const toEmptyIfNil = (value: any) => {
-  if (value === null || value === undefined) {
-    return {};
-  }
-  return value;
-};
-
-const toNullIfEmpty = <T extends object = any>(value: T) => {
-  if (isEmpty(value)) {
-    return null;
-  }
-  return value;
-};
+import { toEmptyIfNil } from '../utils/toEmptyIfNil.util';
+import { toNullIfEmpty } from '../utils/toNullIfEmpty.util';
 
 export interface InstantiatePipeOptions extends ValidatorOptions {
   validate?: boolean;

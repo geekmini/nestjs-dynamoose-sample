@@ -5,7 +5,7 @@ import { EnvironmentVariables } from './providers/config/envs';
 import { Logger, ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(RootModule, { snapshot: true });
+  const app = await NestFactory.create(RootModule);
   const config = app.get(ConfigService<EnvironmentVariables>);
 
   // enable transformation and validation globally
